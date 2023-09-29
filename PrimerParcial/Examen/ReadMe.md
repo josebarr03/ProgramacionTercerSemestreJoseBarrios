@@ -43,3 +43,63 @@ std::cout << "Resultado: " << resultado << std::endl;
 
 return 0;
 }
+```
+
+O(log^2) - logarítmica cuadrática
+
+## Documentación código examen
+### .h
+```c++
+#ifndef DOUBLE_CELL_H  
+#define DOUBLE_CELL_H  
+  
+class DoubleCell {  
+public:  
+    // Default constructor  
+    explicit DoubleCell(); //  
+  
+    // Constructor with value    
+    explicit DoubleCell(double value);  
+  
+    // Copy constructor  
+    DoubleCell(const DoubleCell &other);  
+  
+    //Reference constructor  
+    DoubleCell(DoubleCell &&other) noexcept; //  
+  
+    // Destructor    
+    ~DoubleCell() = default;  
+  
+    // Assignment operator by copy  
+    DoubleCell &operator = (const DoubleCell &other); //  
+  
+    // Assignment operator by reference    
+    DoubleCell &operator = (DoubleCell &&other) noexcept;  
+  
+    // Assignment operator for double  
+    DoubleCell &operator=(double other);  
+  
+    // Arithmetic operators  
+    DoubleCell operator +(const DoubleCell &other) const;  
+    DoubleCell operator +(const double other) const;  
+    DoubleCell operator -(const DoubleCell &other) const;  
+    DoubleCell operator -(const double other) const;  
+    DoubleCell operator *(const DoubleCell &other) const;  
+    DoubleCell operator *(const double other) const;  
+    DoubleCell operator /(const DoubleCell &other) const;  
+    DoubleCell operator /(const double other) const;  
+  
+    // Setters  
+    void setValue (double newValue);  
+    // Getters  
+    double GetValue() const;  
+  
+  
+private:  
+    double Storedvalue;  
+};  
+  
+#endif  // DOUBLE_CELL_H
+```
+Este es el archivo header para las celdas de double, primero hacemos un constructor implícito que almacenará un valor por default si después no se asigna uno. Después tenemos un constructor con valor que almacenará el double. Con los constructores de copia y referencia se podrán asignar valores y con el destructor se puede destruir el "DoubleCell" para que no ocupe espacio. Después a los siguientes operadores (referencia, copia y double) se les dice que el valor será un double, luego tenemos los operadores aritméticos que los primeros dos son suma, el tercero y cuarto resta, el quinto y sexto multiplicación y los últimos dos división.  Al final tenemos las funciones de Set y Get, con el set se puede ver el valor y con el get se puede asignar el valor.
+
