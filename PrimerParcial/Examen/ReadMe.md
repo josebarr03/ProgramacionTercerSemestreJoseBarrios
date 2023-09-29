@@ -103,3 +103,105 @@ private:
 ```
 Este es el archivo header para las celdas de double, primero hacemos un constructor implícito que almacenará un valor por default si después no se asigna uno. Después tenemos un constructor con valor que almacenará el double. Con los constructores de copia y referencia se podrán asignar valores y con el destructor se puede destruir el "DoubleCell" para que no ocupe espacio. Después a los siguientes operadores (referencia, copia y double) se les dice que el valor será un double, luego tenemos los operadores aritméticos que los primeros dos son suma, el tercero y cuarto resta, el quinto y sexto multiplicación y los últimos dos división.  Al final tenemos las funciones de Set y Get, con el set se puede ver el valor y con el get se puede asignar el valor.
 
+## .cpp
+```c++
+#include "DoubleCell.h"  
+#include <stdexcept>  
+  
+// Default constructor  
+DoubleCell::DoubleCell():Storedvalue(0.0){}  
+  
+// Constructor with value  
+DoubleCell::DoubleCell(double value) : Storedvalue(value){}  
+  
+// Copy constructor  
+DoubleCell::DoubleCell(const DoubleCell& other) : Storedvalue(other.Storedvalue){}  
+  
+//Reference  constructor  
+DoubleCell::DoubleCell (DoubleCell &&other) noexcept : Storedvalue(other.Storedvalue){}  
+  
+// Destructor  
+  
+  
+// Assignment operator by copy  
+DoubleCell &DoubleCell::operator=(const DoubleCell &other){  
+    if (this != &other)  
+    {  
+        Storedvalue = other.Storedvalue;  
+    }  
+    return *this;  
+}  
+  
+// Assignment operator by reference  
+DoubleCell &DoubleCell::operator=(DoubleCell &&other) noexcept {  
+    if (this != &other){  
+        Storedvalue = other.Storedvalue;  
+    }  
+    return *this;  
+}  
+  
+  
+// Assignment operator for double  
+DoubleCell& DoubleCell::operator=(double value){  
+    Storedvalue = value;  
+    return *this;  
+}  
+  
+// Arithmetic operators  
+//DoubleCell adding  
+DoubleCell DoubleCell::operator +(const DoubleCell &other) const{  
+    return DoubleCell(Storedvalue + other.Storedvalue);  
+}  
+//primitive double adding  
+DoubleCell DoubleCell :: operator + (double value) const  
+{  
+    return DoubleCell(Storedvalue + value);  
+}  
+  
+//DoubleCell substracting  
+DoubleCell DoubleCell::operator - (const DoubleCell &other) const  
+{  
+    return DoubleCell(Storedvalue - other.Storedvalue);  
+}  
+  
+//primitive double substracting  
+DoubleCell DoubleCell::operator -(double value) const{  
+    return DoubleCell(Storedvalue - value);  
+}  
+  
+//DoubleCell multiplication  
+DoubleCell DoubleCell::operator *(const DoubleCell& other) const{  
+    return DoubleCell(Storedvalue * other.Storedvalue);  
+}  
+//primitive double multiplication  
+DoubleCell DoubleCell::operator * (double value) const  
+{  
+    return DoubleCell(Storedvalue * value);  
+}  
+  
+//DoubleCell division  
+DoubleCell DoubleCell::operator /(const DoubleCell& other) const{  
+    if(other.Storedvalue == 0){  
+        throw std::invalid_argument("Division by zero");  
+    }  
+    return DoubleCell(Storedvalue / other.Storedvalue);  
+}  
+  
+//Primitive souble division DoubleCell DoubleCell::operator /(double value) const{  
+    if(value == 0){  
+        throw std::invalid_argument("Division by zero");  
+    }  
+    return DoubleCell(Storedvalue / value);  
+}  
+  
+// Setters  
+void DoubleCell::setValue(double value){  
+    Storedvalue = value;  
+}  
+  
+// Getters  
+double DoubleCell::GetValue() const {  
+    return Storedvalue;  
+}
+```
+Para que éste archivo funcione primero se llama al header credo de "DoubleCell". Luego se llama a los constructores: el implícito con el que tendrá un valor predeterminado, el constructor de copia asigna el valor de la variable y el constructor de referencia también pero lo iguala a 0, y en el destructor no hay nada porque no hay destructores en .cpp. En la asignación de operador de copia toma algunos valores, en el operador de referencia igual los toma y los iguala a 0 y el operador de los doubles iguala el valor almacenado al valor proporcionado. Después en los operadores aritméticos muestra como hacer cada operación básica (suma, resta, multiplicación, división). Por último están la función del set para indicar que se le pueda dar visibilidad al valor y el get para poder obtenerlo.
