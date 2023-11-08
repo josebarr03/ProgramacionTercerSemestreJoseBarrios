@@ -275,3 +275,10 @@
 - ***Línea 200:*** Verifica si "a" es mayor que "b".
 - ***Línea 201:*** Si "a" es mayor regresa "a" y si "b" es mayor regresa "b".
 ### Investigación
+Un árbol AVL es un árbol binario de búsqueda que cumple con la condición de que la diferencia entre las alturas de los subárboles de cada uno de sus nodos es, como mucho 1.
+Su propiedad de equilibrio asegura que la profundidad del árbol sea O(log(n)), por lo que las operaciones sobre estas estructuras no deberán recorrer mucho para hallar el elemento deseado.
+Entre sus operaciones se encuentra la inserción que consiste cuando se inserta un nuevo nodo en el árbol hay que tener en cuenta que cada nodo no puede tener más de dos hijos, por esta razón si un nodo ya tiene 2 hijos, el nuevo nodo nunca se podrá insertar como su hijo, después del proceso hay que comprobar que se sigue manteniendo la condición de equilibrio. En la operación de borrado si el nodo no tiene hijos únicamente habrá que borrar el elemento y ya habremos concluido la operación, si tiene un sólo hijo para borrar el nodo deseado el padre del nodo a borrar pasa a apuntar al hijo del nodo borrado, y si el nodo a borrar tiene dos hijos se sustituye el nodo a borrar por mayor de los nodos menores del nodo borrado, o por el menor de los nodos mayores de dicho nodo y una vez realizada esta sustitución se borra el nodo que sustituyó al nodo eliminado. En este proceso se puede realizar más de una rotación.
+
+## Bibliografía
+- TLDP-ES: Página Principal. Accedido el 8 de noviembre de 2023. [En línea]. Disponible: http://es.tldp.org/Tutoriales/doc-programacion-arboles-avl/avl-trees.pdf
+- “DSTool: Herramienta para la programación con estructuras de datos”. HCI-RG: welcome - home. Accedido el 8 de noviembre de 2023. [En línea]. Disponible: http://www.hci.uniovi.es/Products/DSTool/avl/avl-operaciones.html
