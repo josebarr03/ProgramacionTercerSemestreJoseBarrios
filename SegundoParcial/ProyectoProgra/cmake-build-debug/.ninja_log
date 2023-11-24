@@ -1,8 +1,4 @@
 # ninja log v5
-2	1596	7206049850273170	CMakeFiles/ProyectoProgra.dir/main.cpp.obj	660c4f7f1d13ffd8
-1598	2390	7206049857838763	ProyectoProgra.exe	d89fc5b3ccd0209
-9	621	7206165582722994	build.ninja	a3e50d2058d39bb9
-1	1152	7206167337079634	CMakeFiles/ProyectoProgra.dir/main.cpp.obj	660c4f7f1d13ffd8
-1154	2369	7206167348204809	ProyectoProgra.exe	d89fc5b3ccd0209
 2	3347	7206814411975737	CMakeFiles/ProyectoProgra.dir/main.cpp.obj	660c4f7f1d13ffd8
+9	621	7222955049991353	build.ninja	a3e50d2058d39bb9
 3349	4381	7206814419564644	ProyectoProgra.exe	d89fc5b3ccd0209
